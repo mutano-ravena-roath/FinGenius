@@ -1,0 +1,15 @@
+# Node
+dist/
+node_modules/
+.cache/
+
+# Docker
+Dockerfile.*
+
+# Environment variables
+.env
+.env.*
+
+# application folders and files
+test/
+data/

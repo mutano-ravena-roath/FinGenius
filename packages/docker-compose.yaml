@@ -1,0 +1,38 @@
+# ************************************************************************
+# docker compose up -d --build
+# docker compose down -v
+# docker attach [CONTAINER]
+# docker exec -it mysql mysql -uroot -ppassword
+# ************************************************************************
+services:
+  mysql:
+    image: mysql:8.3.0
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    security_opt:
+      - seccomp:unconfined
+    container_name: backend
+    ports:
+      - 80:80
+    env_file:
+      - backend/.env
+    depends_on:
+      - mysql
+    volumes:
+      - ./backend:/usr/src/app
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
