@@ -23,13 +23,16 @@ import { AllowAnon } from "../auth/guards/allow-anon.guard";
 
 @Controller("user")
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) { }
 
   @AllowAnon()
   @Post()
   async create(
     @Body() createUserDto: CreateUserDto,
-  ): Promise<User> {
+  ): Promise<{
+    new: boolean;
+    user: User;
+  }> {
     return await this.userService.create(createUserDto)
   }
 

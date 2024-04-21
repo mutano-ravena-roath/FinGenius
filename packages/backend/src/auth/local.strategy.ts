@@ -20,15 +20,15 @@ import { User } from "../user/entities/user.entity";
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {
-    super({ usernameField: "email" });
+    super({ usernameField: "wallet" });
   }
 
-  public async validate(email: string, pass: string): Promise<User> {
-    const user = await this.authService.validateUser(email, pass);
+  public async validate(wallet: string): Promise<User> {
+    const user = await this.authService.validateUser(wallet);
 
     if (!user)
       throw new UnauthorizedException(
-        "Invalid credentials. Provided email or password is incorrect."
+        "Invalid credentials. Provided wallet is incorrect."
       );
     return user;
   }

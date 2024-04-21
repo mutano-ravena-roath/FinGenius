@@ -1,16 +1,23 @@
+/** next */
+import type { AppProps } from "next/app";
+
+/** external libs */
 import {
     RainbowKitProvider,
     connectorsForWallets,
 } from "@rainbow-me/rainbowkit";
 import { injectedWallet } from "@rainbow-me/rainbowkit/wallets";
 import "@rainbow-me/rainbowkit/styles.css";
-import type { AppProps } from "next/app";
 import { http, WagmiProvider, createConfig } from "wagmi";
-import Layout from "../components/Layout";
-import "../styles/globals.css";
 import { celo, celoAlfajores } from "wagmi/chains";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+/** components */
+import Layout from "../components/Layout";
+
+/** styles */
+import "../styles/globals.scss";
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const connectors = connectorsForWallets(
     [
@@ -41,9 +48,9 @@ function App({ Component, pageProps }: AppProps) {
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider>
-                    <Layout>
+                    {/* <Layout> */}
                         <Component {...pageProps} />
-                    </Layout>
+                    {/* </Layout> */}
                 </RainbowKitProvider>
             </QueryClientProvider>
         </WagmiProvider>

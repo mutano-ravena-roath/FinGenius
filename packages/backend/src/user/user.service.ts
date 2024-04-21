@@ -3,7 +3,6 @@ import {
   Logger,
   Injectable,
   NotFoundException,
-  UnauthorizedException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 
@@ -40,10 +39,16 @@ export class UserService extends BaseService<User> {
    * @throws {UnauthorizedException} if email already exists
    * @throws {BadRequestException} if invalid IP address
    */
-  public async create(createUserDto: CreateUserDto): Promise<User> {
-    // check if email already exists
-    if (await this.findOne(["email"], [createUserDto.email]))
-      throw new UnauthorizedException("Email already exists");
+  public async create(createUserDto: CreateUserDto): Promise<{
+    new: boolean;
+    user: User;
+  }> {
+    // if the user already exists, return the user
+    const userExists = await this.findOne(["wallet"], [createUserDto.wallet]);
+    if (userExists) return {
+      new: false,
+      user: userExists,
+    };
 
     const entity = this.repository.create(createUserDto);
     const user = await this.insertEntity(entity);
@@ -55,7 +60,10 @@ export class UserService extends BaseService<User> {
       state: user,
     });
 
-    return user;
+    return {
+      new: true,
+      user,
+    };
   }
 
   /**

@@ -9,9 +9,7 @@ export type EntityData = { id: number; name: string; phoneNumber?: string };
  * object after the passport middleware has been applied.
  *
  * @property {User} user - the user object returned from the passport middleware
- * @property {string} ip - the IP address of the request
  */
 export interface PassportRequest extends Request {
   user?: User;
-  ip: string;
 }

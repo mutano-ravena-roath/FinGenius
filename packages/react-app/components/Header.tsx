@@ -18,7 +18,7 @@ export default function Header() {
     }, []);
 
     return (
-        <Disclosure as="nav" className="bg-prosperity border-b border-black">
+        <Disclosure as="nav" className="bg-primary border-b border-black">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -46,7 +46,7 @@ export default function Header() {
                                 <div className="flex flex-shrink-0 items-center">
                                     <Image
                                         className="block h-8 w-auto sm:block lg:block"
-                                        src="/logo.svg"
+                                        src="/logo.png"
                                         width="24"
                                         height="24"
                                         alt="Celo Logo"

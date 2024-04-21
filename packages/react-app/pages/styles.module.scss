@@ -1,0 +1,71 @@
+.container {
+  height: 100vh;
+  background-image: url("/light.jpg");
+  background-size: auto 80%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  padding: 6rem 3rem;
+  color: var(--ice);
+
+  h1 {
+    font-size: 3.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    white-space: nowrap;
+
+    span {
+      color: var(--primary);
+    }
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+}
+
+.actions {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem 3rem;
+
+  button {
+    background: var(--ice);
+    color: var(--secondary);
+    border: none;
+    padding: 1.6rem 3rem;
+    border-radius: 0.8em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      scale: 1.02;
+    }
+  }
+}
