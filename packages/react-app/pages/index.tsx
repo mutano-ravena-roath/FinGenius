@@ -60,7 +60,6 @@ export default function AuthPage() {
   const handleConnect = () => {
     connect({ connector: injected({ target: "metaMask" }) });
 
-    // Set a timeout to check if the user is connected and then redirect
     setTimeout(() => {
       if (isConnected && address) {
         router.push("/home");

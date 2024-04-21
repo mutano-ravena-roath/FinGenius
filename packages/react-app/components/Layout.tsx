@@ -1,22 +1,26 @@
+/** next */
+import { useRouter } from "next/router";
+
+/** react */
 import { FC, ReactNode } from "react";
-import Footer from "./Footer";
-import Header from "./Header";
+
+/** components */
+import HeaderNew from "./HeaderNew";
+import Navbar from "./Navbar";
+///////////////////////////////////////////////////////////////////////////////////////
 
 interface Props {
-    children: ReactNode;
+  children: ReactNode;
 }
 const Layout: FC<Props> = ({ children }) => {
-    return (
-        <>
-            <div className="bg-neutral overflow-hidden flex flex-col min-h-screen">
-                <Header />
-                <div className="py-16 max-w-7xl mx-auto space-y-8 sm:px-6 lg:px-8">
-                    {children}
-                </div>
-                <Footer />
-            </div>
-        </>
-    );
+  const router = useRouter();
+  return (
+    <>
+      {router.pathname !== "/" && <HeaderNew />}
+      {children}
+      {router.pathname !== "/" && <Navbar />}
+    </>
+  );
 };
 
 export default Layout;
