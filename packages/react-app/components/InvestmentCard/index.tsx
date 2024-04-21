@@ -11,14 +11,14 @@ interface Props {
   investment: {
     id: number;
     name: string;
-    amount: number;
     value: number;
     icon: ReactElement;
+    time: string;
   };
 }
 
 const InvestmentCard: FC<Props> = ({
-  investment: { name, amount, value, icon },
+  investment: { name, value, icon, time },
 }: Props) => {
   return (
     <div className={styles.container}>
@@ -34,8 +34,7 @@ const InvestmentCard: FC<Props> = ({
         {icon}
       </div>
       <div className={styles.cardFooter}>
-        <p>Amount: {amount}</p>
-        <p>Last transaction: 1 day ago</p>
+        <p>Last transaction: {time}</p>
       </div>
     </div>
   );

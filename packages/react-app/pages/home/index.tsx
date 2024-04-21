@@ -26,49 +26,30 @@ import { PiStarFourFill } from "react-icons/pi";
 import InvestmentCard from "@/components/InvestmentCard";
 import { useEffect, useState } from "react";
 import HeaderNew from "@/components/HeaderNew";
+import Link from "next/link";
 
 const investments = [
   {
     id: 1,
-    name: "Bitcoin",
-    amount: 0.0001,
-    value: 1000,
-    icon: <FaBitcoin size={32} color="var(--primary)" />,
-  },
-  {
-    id: 2,
     name: "Ethereum",
-    amount: 0.001,
-    value: 300,
+    value: 1,
     icon: <FaEthereum size={32} color="var(--primary)" />,
-  },
-  {
-    id: 3,
-    name: "Dogecoin",
-    amount: 100,
-    value: 0.3,
-    icon: <SiSolana size={32} color="var(--primary)" />,
+    time: "10 minutes ago",
   },
 ];
 
 const transactions = [
   {
     id: 1,
-    name: "Salary",
-    type: "Salary",
-    value: 1000,
+    name: "ETH",
+    type: "Investment",
+    value: -1,
   },
   {
     id: 2,
-    name: "Netflix",
-    type: "Subscription",
-    value: -10,
-  },
-  {
-    id: 3,
-    name: "McDonalds",
-    type: "Food",
-    value: -5,
+    name: "Received from 0xB...C4a",
+    type: "Income",
+    value: 10,
   },
 ];
 
@@ -97,10 +78,10 @@ const HomePage = () => {
     <div className={styles.container}>
       <div className={styles.totalBalance}>
         <p>Total Balance</p>
-        <h2>$0.00</h2>
+        <h2>$9.00</h2>
       </div>
       <div className={styles.investments}>
-        <button className={styles.addInvestment}>
+        <Link href="/newInvestment" className={styles.addInvestment}>
           <div className={styles.iconContainer}>
             {icons.map((icon, index) => (
               <div
@@ -114,16 +95,16 @@ const HomePage = () => {
             ))}
           </div>
           <p>Add Investment</p>
-        </button>
+        </Link>
         {investments.map((investment) => (
           <InvestmentCard
             key={uuidv4()}
             investment={{
               id: investment.id,
               name: investment.name,
-              amount: investment.amount,
               value: investment.value,
               icon: investment.icon,
+              time: investment.time,
             }}
           />
         ))}

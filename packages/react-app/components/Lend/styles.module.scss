@@ -1,0 +1,33 @@
+.loanList{
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.loanCard{
+    width: 100%;
+    background-color: var(--white);
+    padding: 1.6rem;
+    border-radius: .4rem;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+        background-color: var(--primary);
+        color: var(--white);
+        padding: .6rem 1.6rem;
+        border: none;
+        border-radius: .4rem;
+        cursor: pointer;
+        font-weight: 500;
+    }
+}
+
+.infos {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
