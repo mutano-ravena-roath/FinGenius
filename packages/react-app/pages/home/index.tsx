@@ -1,10 +1,16 @@
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 /** external libs */
 import { v4 as uuidv4 } from "uuid";
 
 /** components */
 import Navbar from "@/components/Navbar";
+import InvestmentCard from "@/components/InvestmentCard";
+import HeaderNew from "@/components/HeaderNew";
 
 /** icons */
+import { PiStarFourFill } from "react-icons/pi";
 import {
   IoArrowUpCircleOutline,
   IoArrowDownCircleOutline,
@@ -22,11 +28,6 @@ import { SiSolana } from "react-icons/si";
 import styles from "./styles.module.scss";
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import { PiStarFourFill } from "react-icons/pi";
-import InvestmentCard from "@/components/InvestmentCard";
-import { useEffect, useState } from "react";
-import HeaderNew from "@/components/HeaderNew";
-import Link from "next/link";
 
 const investments = [
   {
@@ -58,10 +59,10 @@ const HomePage = () => {
 
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
   const icons = [
-    <FaBitcoin size={42} color="var(--primary)" />,
-    <FaDollarSign size={42} color="var(--primary)" />,
-    <FaEuroSign size={42} color="var(--primary)" />,
-    <FaMoneyBillWave size={42} color="var(--primary)" />,
+    <FaBitcoin size={42} color="var(--primary)" key={uuidv4()}/>,
+    <FaDollarSign size={42} color="var(--primary)" key={uuidv4()}/>,
+    <FaEuroSign size={42} color="var(--primary)" key={uuidv4()}/>,
+    <FaMoneyBillWave size={42} color="var(--primary)" key={uuidv4()}/>,
   ];
 
   useEffect(() => {
@@ -85,7 +86,7 @@ const HomePage = () => {
           <div className={styles.iconContainer}>
             {icons.map((icon, index) => (
               <div
-                key={index}
+                key={uuidv4()}
                 className={`${styles.icon} ${
                   index === currentIconIndex ? styles.visible : styles.hidden
                 }`}
